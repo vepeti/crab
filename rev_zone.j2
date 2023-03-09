@@ -1,0 +1,14 @@
+$TTL {{ ttl }}
+@                       IN      SOA     {{ ns1 }}   {{ hostmaster }} (
+                    {{ serial }}  ; serial
+                    {{ refresh }}          ; refresh
+                    {{ retry }}          ; retry
+                    {{ expiry }}          ; expiry
+                    {{ minimum }} )        ; minimum
+
+@                       IN      NS              {{ ns1 }}
+@                       IN      NS              {{ ns2 }}
+
+{% for record in records if ip_prefix.rev in record.revptr|string -%}
+{{ record.revptr }}             IN      PTR             {{ record.name }}
+{% endfor %}

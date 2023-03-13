@@ -1,5 +1,4 @@
-# crab
-Simple tool, that generates BIND dns PTR zones from master zones
+# Simple python script, that generates BIND9 PTR zones from master zones
 
 Requirements:
   - python3
